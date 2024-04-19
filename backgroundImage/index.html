@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            background-position:center ;
+            background-size:cover ;
+        }
+    </style>
+</head>
+
+<body class="mainBox">
+    
+    <input class="files" type="file" accept="image/*" />
+</body>
+
+
+<script>
+    let files = document.querySelector('.files')
+    let box = document.querySelector('.mainBox')
+    files.addEventListener("change", evt => {
+        console.log(evt.target.files)
+        var file = evt.target.files[0]
+        var reader = new FileReader(file)
+        if(file){
+            reader.readAsDataURL(file);
+            reader.onload = function (event) {
+     
+            console.log(event.target.result)    
+            box.style.backgroundImage = `url(${event.target.result})`
+            
+        };
+        }
+
+
+    })
+</script>
+
+</html>

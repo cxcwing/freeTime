@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mainBox {
+            position: relative;
+            min-height: 100vh;
+            background: url(./img/4.jpg) no-repeat center;
+            background-size: cover;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(6, 213, 51);
+        }
+
+        .imageBox {
+            width: 900px;
+            height: 200px;
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(240, 248, 255, 0.356);
+            border-radius: 5px;
+        }
+
+        .img {
+            width: 200px;
+            height: 120px;
+            background: no-repeat center;
+            background-size: cover;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        .lastImg {
+            margin-right: 0px;
+        }
+    </style>
+</head>
+
+<body class="mainBox">
+    <h1>点击更换背景</h1>
+    <div class="imageBox" data-src="./img/4.jpg">
+        <div class="img" style="background-image:url(./img/1.jpg) ;" data-src="./img/1.jpg"></div>
+        <div class="img" style="background-image:url(./img/2.png) ;" data-src="./img/2.png"></div>
+        <div class="img" style="background-image:url(./img/3.jpg) ;" data-src="./img/3.jpg"></div>
+        <div class="img lastImg" style="background-image:url(./img/5.jpg) ;" data-src="./img/5.jpg"></div>
+    </div>
+</body>
+<script>
+    let imageBox = document.querySelector('.imageBox')
+    let mainBox = document.querySelector('.mainBox')
+    imageBox.addEventListener('click', evt => {
+        mainBox.style.backgroundImage = `url(${evt.target.dataset.src})`
+    })
+</script>
+
+</html>
