@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+<script>
+//throttle 节流
+    let div = document.querySelector('div')
+    function throttle(fun,wait,...params){
+        let timer
+        return () =>{
+            if(!timer){
+                timer = setTimeout(() => {
+                    fun(...params)
+                    timer = null
+                },wait);
+            }
+        }
+    }
+    let param1 = 111111
+    let param2 = 222222
+    div.addEventListener('click',throttle((param11,param22)=>{
+        console.log(param11+'-55555-'+param22)
+    },1000,param1,param2))
+
+</script>
+
+</html>
