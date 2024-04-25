@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f1b26;
+            overflow: hidden;
+        }
+        .mainBox{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .mainBox .box{
+            position: relative;
+            width: 250px;
+            height: 50px;
+            background: #1d3244;
+            border-radius: 5px;
+            transition: 0.5s;
+
+        }
+        .mainBox .box.hovered{
+            opacity: 0.8;
+            scale: 1.75;
+            z-index: 1000;
+            background: #1296ff;
+            box-shadow: 0 0 50px #1294ffc2;
+        }
+        .broAF{
+            opacity: 0.8;
+            scale: 1.5;
+            z-index: 3;
+            background: #0d75c9;
+            box-shadow: 0 0 20px #0d74c96a;
+        }
+        .broAAFF{
+            opacity: 0.8;
+            scale: 1.25;
+            z-index: 2;
+            background: #08518d;
+            box-shadow: 0 0 50px #08518d89;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainBox">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    let boxs = document.querySelectorAll('.box')
+
+    boxs.forEach(item =>{
+        item.addEventListener('mouseover' ,evt =>{
+            let broF = evt.target.nextElementSibling
+            let broA = evt.target.previousElementSibling
+            evt.target.classList.add('hovered')
+
+            if(broF){
+                broF.classList.add('broAF')
+                let broFF = broF.nextElementSibling
+                if(broFF){
+                    broFF.classList.add('broAAFF')
+                }
+            }
+            
+            if(broA){
+                broA.classList.add('broAF')
+                let broAA = broA.previousElementSibling
+                if(broAA){
+                    broAA.classList.add('broAAFF')
+                }
+            }
+        })
+        item.addEventListener('mouseout',evt =>{
+            let waveList = document.querySelectorAll('.hovered,.broAF,.broAAFF')
+            waveList.forEach(hoveredItem => hoveredItem.classList.remove('hovered','broAF','broAAFF'))
+        })
+       
+
+    })
+
+</script>
+</html>
