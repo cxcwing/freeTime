@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方块</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+        }
+
+        .mainBox {
+            position: relative;
+            transform-style: preserve-3d;
+            /* perspective:1000px; */
+            height: 600px;
+            width: 600px;
+            transform: rotateX(25deg) rotateY(25deg);
+            transition: 0.1s;
+        }
+
+        .boxAF,
+        .boxTB,
+        .boxLR {
+            opacity: 0.8;
+            position: absolute;
+            background: url(./img/1.jpg) no-repeat;
+            background-size: cover;
+            border-radius: 5px;
+        }
+
+        /* H:400px W:200px L:60px */
+        .boxAF {
+            height: 400px;
+            width: 220px;
+            top: calc(50% - 200px);
+            left: calc(50% - 110px);
+
+        }
+
+        .boxLR {
+            width: 60px;
+            height: 400px;
+            top: calc(50% - 200px);
+            left: calc(50% - 30px);
+
+        }
+
+        .boxTB {
+            width: 220px;
+            height: 60px;
+            top: calc(50% - 30px);
+            left: calc(50% - 110px);
+
+        }
+
+        .boxA {
+            transform: translateZ(30px);
+        }
+
+        .boxF {
+            transform: translateZ(-30px)
+        }
+
+        .boxL {
+            background-position: left;
+            transform: translateX(-110px) rotateY(-90deg);
+        }
+
+        .boxR {
+            background-position: right;
+            transform: translateX(110px) rotateY(90deg);
+        }
+
+        .boxT {
+            background-position: top;
+            transform: translateY(-200px) rotateX(-90deg);
+        }
+
+        .boxB {
+            background-position: bottom;
+            transform: translateY(200px) rotateX(-90deg);
+        }
+
+        .inputBox {
+            width: 400px;
+            height: 400px;
+            background-color: #0051e9;
+            background-image: linear-gradient(160deg, #0051e9 0%, #a280d0 100%);
+            position: relative;
+        }
+
+        .btnBox {
+            box-sizing: border-box;
+            width: 20px;
+            height: 20px;
+            /* background-color: rgb(49, 250, 4); */
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px rgb(234, 152, 152), ;
+            border: white 3px solid;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            left: 190px;
+            top: 190px;
+            transition: 0.04s;
+        }
+
+        .btn {
+            width: 16px;
+            height: 16px;
+            background-color: rgb(4, 234, 250);
+            border-radius: 20px;
+            box-shadow: 2px 2px 4px rgba(80, 78, 78, 0.721), -2px 1px 4px rgba(80, 78, 78, 0.721);
+            transition: 0.6s;
+        }
+
+        .re {
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            border-radius: 5px;
+            top: -50px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 40px;
+            background: rgb(49, 219, 203);
+
+            cursor: pointer;
+            transition: background 1s;
+        }
+
+        .re:hover {
+            background: rgb(29, 70, 228);
+
+        }
+
+        .active {
+            background-color: rgb(4, 234, 250);
+            transform: scale(0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainBox">
+        <div class="boxAF boxA"></div>
+        <div class="boxAF boxF"></div>
+        <div class="boxLR boxL"></div>
+        <div class="boxLR boxR"></div>
+        <div class="boxTB boxT"></div>
+        <div class="boxTB boxB"></div>
+    </div>
+    <div class="inputBox">
+        <div class="btnBox" data-is="No">
+            <div class="btn" data-is="No"></div>
+        </div>
+        <div class="re">重置位置</div>
+    </div>
+</body>
+
+<script>
+    let mainBox = document.querySelector('.mainBox')
+    let inputBox = document.querySelector(".inputBox")
+    let btnBox = document.querySelector(".btnBox")
+    let btn = document.querySelector('.btn')
+    let re = document.querySelector('.re')
+
+    let isDown = false
+    let btnBoxX
+    let btnBoxY
+    re.addEventListener('click', evt => {
+        btnBox.style.left = '190px'
+        btnBox.style.top = '190px'
+        mainBox.style.transform = `rotateY(${25}deg) rotateX(${25}deg)`
+
+    })
+
+    inputBox.addEventListener('mousemove', evt => {
+        evt.preventDefault()
+        if (isDown && evt.target.dataset.is != 'No') {
+            btnBox.style.left = evt.offsetX - 10 + 'px'
+            btnBox.style.top = evt.offsetY - 10 + 'px'
+            let RX = (evt.offsetX - 200) / 200
+            let RY = (evt.offsetY - 200) / 200
+            mainBox.style.transform = `rotateY(${25 + 360 * RX}deg) rotateX(${25 + 360 * RY}deg)`
+
+        }
+    })
+    btnBox.addEventListener('mousedown', evt => {
+
+        isDown = true
+        btn.classList.add('active')
+    })
+    btnBox.addEventListener('mouseup', evt => {
+        isDown = false
+        btn.classList.remove(['active'])
+    })
+
+
+
+</script>
+
+</html>
