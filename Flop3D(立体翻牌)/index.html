@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flop3D(立体翻牌)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1d1160;
+        }
+        .mainBox{
+            position: relative;
+            height: 500px;
+            width: 360px;
+        }
+        .front{
+            background-image: url(./img/1.png);
+            z-index: 2;
+ 
+        }    
+        .back{
+            background-image: url(./img/2.png);
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+        .mainBox:hover .front{
+            transform: rotateY(-180deg);
+        }
+
+        .mainBox:hover .back{
+            transform: rotateY(0deg);
+        }
+        .front .text{
+            backface-visibility: hidden;
+            transform: translateZ(50px);
+        }
+        .front,.back{
+            height: 100%;
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            left: 0;
+            top:0;
+            border-radius:15px ;
+            transform-style:preserve-3d;
+            backface-visibility: hidden;
+            transition: 1s;
+            text-align: center;
+
+        }
+        .text{
+            margin-top:200px ;
+            color: #FF00BF;
+        }
+        .back .text{
+            transform: translateZ(50px)
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mainBox">
+        <div class="front">
+            <p class="text">移动至此</p>
+        </div>
+
+        <div class="back">
+            <p class="text">这是背面</p>
+        </div>
+    </div>
+</body>
+</html>
