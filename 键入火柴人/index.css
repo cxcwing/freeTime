@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #452c63;
+}
+
+.mainBox {
+    position: relative;
+}
+
+.match {
+    /* transform-style: preserve-3d; */
+    /* background-color: aliceblue; */
+    width: 600px;
+    height: 600px;
+    position: relative;
+}
+
+.head {
+    box-sizing: border-box;
+    width: 130px;
+    height: 130px;
+    border: 10px solid black;
+    border-radius: 200px;
+    position: absolute;
+    left: calc(50% - 65px);
+    top: 10px;
+}
+
+.body {
+    width: 10px;
+    height: 220px;
+    background-color: black;
+    border-radius: 10px;
+    position: absolute;
+    left: calc(50% - 5px);
+    top: 136px;
+}
+
+.leftLT,
+.leftLB,
+.leftHT,
+.leftHB,
+.rightHT,
+.rightHB,
+.rightLT,
+.rightLB {
+    width: 10px;
+    border-radius: 10px;
+    background-color: black;
+    transform-origin: 50% 0%;
+    left: calc(50% - 5px);
+}
+
+.leftHT,
+.leftHB,
+.rightHT,
+.rightHB {
+    z-index: 1000;
+}
+
+.leftHT {
+    height: 110px;
+    transform: rotateZ(45deg) scaleY(1);
+    position: absolute;
+    left: calc(50% - 5px);
+    top: 200px;
+    transition: all 0.15s;
+}
+
+/* rotateZ(79deg) scaleY(6) */
+.leftHB {
+    height: 100px;
+    position: absolute;
+    bottom: -95px;
+    transform: rotateZ(50deg) scaleY(1);
+    transition: all 0.15s;
+}
+
+.leftHB::before {
+    content: '这是鼠标';
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    left: -10px;
+    bottom: -10px;
+    color: rgb(3, 207, 252);
+}
+
+.rightHT {
+    height: 110px;
+    transform: rotateZ(-30deg) scaleY(1);
+    position: absolute;
+    top: 220px;
+    transition: 0.1s;
+}
+
+.rightHB {
+    height: 100px;
+    position: absolute;
+    bottom: -95px;
+    transform: rotateZ(79deg) scaleY(1);
+    transition: 0.1s;
+}
+
+.leftLT {
+    height: 130px;
+    position: absolute;
+    transform: rotateZ(90deg) scaleY(1);
+    top: 354px;
+}
+
+.leftLB {
+    height: 100px;
+    position: absolute;
+    bottom: -95px;
+    transform: rotateZ(-80deg) scaleY(1);
+}
+
+.rightLT {
+    height: 130px;
+    position: absolute;
+    transform: rotateZ(20deg) scaleY(1);
+    top: 354px;
+}
+
+.rightLB {
+    height: 100px;
+    position: absolute;
+    bottom: -95px;
+    transform: rotateZ(-20deg) scaleY(1);
+
+}
+
+.ConBox {
+    width: 200px;
+    height: 220px;
+    background-color: rgba(240, 248, 255, 0.714);
+    transform: skewX(30deg);
+    position: absolute;
+    top: 220px;
+    z-index: 10;
+    left: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mouseBox {
+    flex-basis: 40%;
+    padding: 20px;
+    flex-grow: 0;
+    /* background-color: #21ffe5;    */
+    position: relative;
+}
+
+.mousePad {
+    height: 100%;
+    width: 80%;
+    background: url(./img/1.png) bottom no-repeat;
+    background-size: cover;
+}
+
+.keyBoardBox {
+    flex-basis: 50%;
+
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.keyBoard {
+    transform: rotate(-90deg);
+    border-radius: 6px;
+    /* background-color: rgba(9, 255, 222, 0.744); */
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+.keyBoard::before{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top:0;
+    content: '';
+    opacity: 0.9;
+    background:url(./img/2.png) center no-repeat;
+    background-size: cover;
+    z-index: -1;
+    border-radius: 6px;
+}
+.line1 {
+    display: flex;
+    width: 80px;
+    gap: 1px;
+    border-radius: 6px;
+}
+
+.line1>div,
+.line2>div {
+    border-radius: 4px;
+    flex-basis: 25%;
+    flex: 1;
+    border: #452c63 1px solid;
+    flex-shrink: 0;
+
+}
+
+.line2 {
+    display: flex;
+    width: 80px;
+    gap: 1px;
+}
+
+.line3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.kongge {
+    color: rgb(1, 1, 1);
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+    height:20px;
+    width:40px;
+    line-height: 10px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 5px;
+    border: #452c63 1px solid;
+
+}
+
+.kongge::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 5px;
+    position: absolute;
+    border-left: 2px rgb(73, 73, 73) solid;
+    overflow: hidden;
+    left: 8px;
+    bottom: 4px;
+}
+.kongge::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 5px;
+    position: absolute;
+    border-left: 2px rgb(30, 30, 30) solid;
+    overflow: hidden;
+    right: -14px;
+    bottom: 4px;
+    
+}
+.active{
+    background: rgb(241, 155, 8);
+}
