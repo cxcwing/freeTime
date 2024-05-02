@@ -7,22 +7,27 @@ let countY = 0
 
 let nowDirection = 'R'
 creatFood()
+let isChange = true
 body.addEventListener('keydown', evt => {
     if (evt.key === 'w' || evt.key === 'W') {
-        if (nowDirection != 'D') {
+        if (nowDirection != 'D' && isChange) {
             nowDirection = 'U'
+            isChange = false
         }
     } else if (evt.key === 's' || evt.key === 'S') {
-        if (nowDirection != 'U') {
+        if (nowDirection != 'U' && isChange) {
             nowDirection = 'D'
+            isChange = false
         }
     } else if (evt.key === 'a' || evt.key === 'A') {
-        if (nowDirection != 'R') {
+        if (nowDirection != 'R' && isChange) {
             nowDirection = 'L'
+            isChange = false
         }
     } else if (evt.key === 'd' || evt.key === 'D') {
-        if (nowDirection != 'L') {
+        if (nowDirection != 'L' && isChange) {
             nowDirection = 'R'
+            isChange = false
         }
     }
 
@@ -75,11 +80,9 @@ let move = setInterval(() => {
         clearInterval(move)
         alert('刷新重新开始')
     }
-    
+    isChange = true
 
-
-
-}, 200);
+},200);
 
 
 console.log(Math.floor(Math.random() * 60))
