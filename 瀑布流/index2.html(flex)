@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+
+.container{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+.line{
+    width: 20%;
+
+}
+
+.items{
+    margin-bottom: 15px;
+}
+.items img{
+    width: 100%;
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="line">
+
+            <div class="items">
+                <img src="img/5.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/6.png"/>
+            </div>
+            <div class="items">
+                <img src="img/7.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/1.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/2.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/3.png"/>
+            </div>
+            <div class="items">
+                <img src="img/4.png"/>
+            </div>
+            <div class="items">
+                <img src="img/5.jpg"/>
+            </div>
+
+        </div>
+        <div class="line">
+            <div class="items">
+                <img src="img/1.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/2.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/3.png"/>
+            </div>
+            <div class="items">
+                <img src="img/4.png"/>
+            </div>
+            <div class="items">
+                <img src="img/1.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/2.jpg"/>
+            </div>
+        </div>
+        <div class="line">
+            <div class="items">
+                <img src="img/5.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/6.png"/>
+            </div>
+            <div class="items">
+                <img src="img/7.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/1.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/2.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/3.png"/>
+            </div>
+        </div>
+        <div class="line">
+            <div class="items">
+                <img src="img/1.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/2.jpg"/>
+            </div>
+            <div class="items">
+                <img src="img/3.png"/>
+            </div>
+        </div>
+        <div class="line">
+            <div class="items">
+                <img src="img/3.png"/>
+            </div>
+            <div class="items">
+                <img src="img/4.png"/>
+            </div>
+            <div class="items">
+                <img src="img/6.png"/>
+            </div>
+            <div class="items">
+                <img src="img/7.jpg"/>
+            </div>
+    
+        </div>
+
+
+
+    </div>
+</body>
+</html>
