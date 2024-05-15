@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            background-color: #F0F8FF;
+            /* background-color: rgb(35, 35, 35); */
+            align-items: center;
+            justify-content: center;
+            transition: all .9s;
+        }
+        .body-active{
+            background-color: rgb(35, 35, 35);
+            transition: all .9s;
+        }
+        .btn-box{
+            position: relative;
+            width: 258px;
+            height: 102px;
+            background-color: #79c6f2;
+            border-radius:52px;
+            border-bottom: 3px solid #79c6f267;
+            border-right: 3px solid #79c6f267;
+            border-top:3px solid #79c6f267;
+            border-left: 3px solid #79c6f267;
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.63),   
+              inset -5px -10px 30px rgba(246, 244, 244, 0.8);  
+            overflow: hidden;
+            transition: all 1s;
+        }
+        .btn-box.night{
+            position: relative;
+            width: 258px;
+            height: 102px;
+            background-color: black;
+            border-radius:52px;
+            border-bottom: 3px solid #1a1a1a67;
+            border-right: 3px solid #1a1a1a67;
+            border-top:3px solid #1a1a1a67;
+            border-left: 3px solid #1a1a1a67;
+            box-shadow: inset 1px 2px 30px rgba(0, 0, 0, 0.63),   
+              inset -1px -1px 30px rgba(246, 244, 244, 0.132);  
+            overflow: hidden;
+            transition: all 1s;
+        }
+        .day{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            background-color: #f6d103;
+            top: calc(50% - 40px);
+            left:5%;
+            border-radius: 45px;
+            box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.737),  
+             inset -2px -2px 2px rgba(55, 55, 55, 0.63),
+             5px 5px 5px rgb(51, 50, 50),
+             0px 2px 5px rgb(141, 141, 141);
+             
+            transition: all 1s;
+        }
+        .day::before{
+            position: absolute;
+            display: block;
+            content:'';
+            width: 140px;
+            height: 140px;
+            /* top: calc(50% - 50px); */
+            /* left: calc(50% - 50px); */
+            /* background-color: antiquewhite; */
+            border-radius: 200px;
+            border:40px #ffffff34 solid;
+            z-index: 100;
+        }
+        .day::after{
+            position: absolute;
+            display: block;
+            content:'';
+            width: 220px;
+            height: 220px;
+            /* top: calc(50% - 50px); */
+            /* left: calc(50% - 50px); */
+            /* background-color: antiquewhite; */
+            border-radius: 200px;
+            border:40px #fefefe17 solid;
+
+        }
+        .border2{
+            position: absolute;
+            width: 80px;
+            height:80px;
+            border-radius: 200px;
+            border:30px #f1f1f152 solid;
+
+        }
+
+        .cloudBox{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transition: all 1s;
+
+        }
+        .cloud{
+            position: absolute;
+            width: 240px;
+            height: 50px;
+            right:0;
+            bottom: 0px;
+            font-size: 50px;
+            transition: all 1s;
+        }    
+
+        .part1{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 20px;
+            bottom: -40px;
+            height: 1em;
+            width: 1em;
+            border-radius: 200px;
+        }
+        .part2{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 40px;
+            bottom: -53px;
+            height: 1.3em;
+            width: 1.3em;
+            border-radius: 200px;
+        }
+        .part3{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 67px;
+            bottom: -60px;
+            height: 1.8em;
+            width: 1.8em;
+            border-radius: 200px;
+        }
+        .part4{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 130px;
+            bottom: -25px;
+            height: 1em;
+            width: 1em;
+            border-radius: 200px;
+        }
+        .part5{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 160px;
+            bottom: -15px;
+            height: 1.1em;
+            width: 1.1em;
+            border-radius: 200px;
+        }
+        .part6{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left:200px; 
+            bottom: -10px;
+            height: 1.8em;
+            width: 1.8em;
+            border-radius: 200px;
+        }
+
+        .cloud-top{
+            position: absolute;
+            /* background-color: rgb(244, 243, 243); */
+            width: 240px;
+            height: 50px;
+            right:5px;
+            bottom: 22px;
+            font-size: 50px;
+            opacity: .5;
+
+            transition: all 1s;
+        }    
+
+        .part1-top{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 20px;
+            bottom: -40px;
+            height: 1em;
+            width: 1em;
+            border-radius: 200px;
+        }
+        .part2-top{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 40px;
+            bottom: -53px;
+            height: 1.3em;
+            width: 1.3em;
+            border-radius: 200px;
+        }
+        .part3-top{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 67px;
+            bottom: -60px;
+            height: 1.8em;
+            width: 1.8em;
+            border-radius: 200px;
+        }
+        .part4-top{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 130px;
+            bottom: -25px;
+            height: 1em;
+            width: 1em;
+            border-radius: 200px;
+        }
+        .part5-top{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left: 160px;
+            bottom: -15px;
+            height: 1.1em;
+            width: 1.1em;
+            border-radius: 200px;
+        }
+        .part6-top{
+            background-color: rgb(244, 243, 243);
+            position: absolute;
+            left:200px; 
+            bottom: -10px;
+            height: 1.8em;
+            width: 1.8em;
+            border-radius: 200px;
+        }
+
+        .cloud-active{
+            transform: translateY(400px);
+            transition: all 1s;
+        }
+
+
+        .day.night{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            background-color: rgb(181, 191, 199);
+            top: calc(50% - 40px);
+            left:67%;
+            border-radius: 45px;
+            box-shadow: inset 5px 5px 2px rgba(229, 229, 229, 0.896),  
+             inset -2px -2px 1px rgba(55, 55, 55, 0.63),
+             5px 5px 1px rgb(44, 44, 44),
+             0px 5px 5px rgb(141, 141, 141);
+             
+            transition: all .9s;
+        }
+        .holeBox{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            /* background-color: yellowgreen; */
+            display: none;
+            transition: all 1s;
+        }
+
+        .holeBox-active{
+            display: block;
+        }
+
+        .hole1{
+            position: absolute;
+            background-color: rgb(153, 160,172);
+            height: 15px;
+            width: 15px;
+            border-radius:20px ;
+            border: 1px solid rgb(135, 141, 152);
+            box-shadow: inset 0px 0px 2px rgb(16, 16, 16);
+            bottom: 0px;
+            right:  0px;
+            margin: 2px;
+        }
+        .hole2{
+            position: absolute;
+            margin: 2px;
+            background-color: rgb(153, 160,172);
+            height: 20px;
+            width: 20px;
+            right:5px ;
+            border-radius:20px ;
+            border: 1px solid rgb(135, 141, 152);
+            box-shadow: inset 0px 0px 2px rgb(16, 16, 16);
+        }
+        .hole3{
+            position: absolute;
+            margin: 2px;
+            background-color: rgb(153, 160,172);
+            height: 25px;
+            width: 25px;
+            left: 0;
+            top: 15px;
+            border-radius:20px ;
+            border: 1px solid rgb(135, 141, 152);
+            box-shadow: inset 0px 0px 2px rgb(16, 16, 16);
+        }
+        .starBox{
+            left: 20px;
+            top: 0;
+            position: absolute;
+            width:500px;
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0);
+            transform: translateY(-300px);
+            transition: all 0.5s;
+        }
+        .stat-active{
+            background-color: black;
+            transform: translateY(0px);
+            transition: all .9s cubic-bezier(.86,0,.29,.34); 
+        }
+        
+        .star1{
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius:-10px -10px -10px -10px;
+            background-color: white;
+            font-size: 20px;
+            overflow: hidden;
+        }
+        .star-left{
+            position: absolute;
+            background-color: rgb(0, 0, 0);
+            width:1em;
+            height:1em;
+            border-radius: 1em;
+            left: -0.5em;
+            top: -0.5em;
+            
+        }
+        .star-right{
+            position: absolute;
+            background-color: black;
+            width:1em;
+            height:1em;
+            border-radius: 1em;
+            right: -0.5em;
+            top: -0.5em;
+        }
+        .star-bottom{
+            position: absolute;
+            background-color: black;
+            width:1em;
+            height:1em;
+            border-radius: 1em;
+            right: -0.5em;
+            bottom: -0.5em;
+        }
+        .star-top{
+            position: absolute;
+            background-color: black;
+            width:1em;
+            height:1em;
+            border-radius: 1em;
+            left: -0.5em;
+            bottom: -0.5em;
+        }
+
+        .star2{
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            font-size: 15px;
+            overflow: hidden;
+        }
+        .star3{
+            position: absolute;
+            left: 10px;
+            bottom: 25px;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            font-size: 10px;
+            overflow: hidden;
+        }
+
+        .star3{
+            position: absolute;
+            left: 10px;
+            bottom: 25px;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            font-size: 10px;
+            overflow: hidden;
+        }
+        
+        .star4{
+            position: absolute;
+            left: 0px;
+            bottom: 45px;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        .star5{
+            position: absolute;
+            left: 30px;
+            bottom: 55px;
+            width: 18px;
+            height: 18px;
+            background-color: white;
+            font-size: 17px;
+            overflow: hidden;
+        }
+        .star6{
+            position: absolute;
+            left: 55px;
+            bottom: 85px;
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            font-size: 13px;
+            overflow: hidden;
+        }
+        .star7{
+            position: absolute;
+            left: 65px;
+            bottom: 65px;
+            width: 14px;
+            height: 13px;
+            background-color: white;
+            font-size: 13px;
+            overflow: hidden;
+        }
+
+        .star8{
+            position: absolute;
+            left: 55px;
+            bottom: 35px;
+            width: 12px;
+            height:11px;
+            background-color: white;
+            font-size: 12px;
+            overflow: hidden;
+        }
+        .star9{
+            position: absolute;
+            left: 95px;
+            bottom: 95px;
+            width: 10px;
+            height:9px;
+            background-color: white;
+            font-size: 10px;
+            overflow: hidden;
+        }
+    
+        .star10{
+            
+            position: absolute;
+            left: 99px;
+            bottom: 20px;
+            width: 13px;
+            height: 12px;
+            background-color: white;
+            font-size: 13px;
+            overflow: hidden;
+   
+        }
+    
+        .star11{
+            
+            position: absolute;
+            left: 99px;
+            bottom: 20px;
+            width: 13px;
+            height: 12px;
+            background-color: white;
+            font-size: 13px;
+            overflow: hidden;
+   
+        }
+        .star12{
+            
+            position: absolute;
+            left: 99px;
+            bottom: 50px;
+            width: 15px;
+            height: 12px;
+            background-color: white;
+            font-size: 14px;
+            overflow: hidden;
+   
+        }
+        .star13{
+            
+            position: absolute;
+            left: 139px;
+            bottom: 40px;
+            width: 15px;
+            height: 12px;
+            background-color: white;
+            font-size: 14px;
+            overflow: hidden;
+   
+        }
+        .star14{
+            position: absolute;
+            left: 139px;
+            bottom: 85px;
+            width: 19px;
+            height: 19px;
+            background-color: white;
+            font-size: 19px;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body >
+    <div class="btn-box">
+
+        <div class="starBox">
+            <div class="star1">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star2">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star3">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star4">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star5">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star6">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star7">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star8">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star9">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star10">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star11">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star12">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star13">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star14">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+            <div class="star15">
+                <div class="star-left"></div>
+                <div class="star-right"></div>
+                <div class="star-top"></div>
+                <div class="star-bottom"></div>
+            </div>
+
+        </div>
+
+    <div class="cloudBox">
+            <div class="cloud">
+                <div class="part1"></div>
+                <div class="part2"></div>
+                <div class="part3"></div>
+                <div class="part4"></div>
+                <div class="part5"></div>
+                <div class="part6"></div>
+            </div>
+            <div class="cloud-top">
+                <div class="part1-top"></div>
+                <div class="part2-top"></div>
+                <div class="part3-top"></div>
+                <div class="part4-top"></div>
+                <div class="part5-top"></div>
+                <div class="part6-top"></div>
+            </div>
+    </div>
+
+        <div class="day">
+            <div class="border2"></div>
+            <div class="holeBox">
+                <div class="hole1"></div>
+                <div class="hole2"></div>
+                <div class="hole3"></div>
+            </div>
+
+
+        </div>
+
+    </div>
+</body>
+<script>
+    let body = document.querySelector('body')
+    let btnBox = document.querySelector('.btn-box')
+    let btnDay = document.querySelector('.day')
+    let cloudBox = document.querySelector('.cloudBox')
+    let holeBox = document.querySelector('.holeBox')
+    let starBox = document.querySelector('.starBox')
+    
+    let isDay = true
+    btnBox.addEventListener('click',()=>{
+        console.log('aaaaa')
+        if(isDay){
+            btnDay.classList.add('night')
+        body.classList.add('body-active')
+        btnBox.classList.add('night')
+        cloudBox.classList.add('cloud-active')
+        holeBox.classList.add('holeBox-active')
+        starBox.classList.add('stat-active')
+        isDay=false
+        }else{
+        isDay = true
+        // console.log('aaaaa')
+        btnDay.classList.remove('night')
+        body.classList.remove('body-active')
+        btnBox.classList.remove('night')
+        cloudBox.classList.remove('cloud-active')
+        holeBox.classList.remove('holeBox-active')
+        starBox.classList.remove('stat-active')
+        }
+       
+  
+    })
+
+
+</script>
+
+</html>
