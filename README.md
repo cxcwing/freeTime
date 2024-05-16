@@ -4,7 +4,7 @@
 
 ![](https://github.com/cxcwing/freeTime/blob/master/readmeImg/day.png)
 
-![](https://github.com/cxcwing/freeTime/blob/master/readmeImg/night .png)
+![](https://github.com/cxcwing/freeTime/blob/master/readmeImg/night.png)
 
 #### 键入火柴人
 
